@@ -1,4 +1,7 @@
 const http = require('http');
+const colors= require('colors');
+
+
 
 const server = http.createServer(function(req,res){
 	res.writeHead(200,{'Content-type':'text/html'});
@@ -8,5 +11,5 @@ const server = http.createServer(function(req,res){
 
 
 server.listen(3000,function(){
-	console.log('Server on port 3000');
+	console.log('Server on port 3000'.green);
 });
