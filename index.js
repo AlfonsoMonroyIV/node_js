@@ -6,9 +6,13 @@ app.use(function(req,res, next){
 	console.log("Url request: "+req.url);
 	next();
 });
-
+app.set('view engine','ejs');
+app.set('views','');
 app.get('/', (req, res) =>{
-	res.end('Welcome');
+	res.render('./views/index.ejs');
+});
+app.get('/login', (req, res) =>{
+	res.render('./views/login.ejs');
 });
 app.get('*',function (req,res){
 	res.end('Page not found	');
