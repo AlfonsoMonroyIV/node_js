@@ -1,13 +1,19 @@
-const math=require('./matematicas.js');
-const os=require('os');
+const express = require('express');
 
+const app = express();
 
-console.log(math);
-console.log(math.add(5,3));
+app.use(function(req,res, next){
+	console.log("Url request: "+req.url);
+	next();
+});
 
-console.log(os.arch());
-console.log(os.platform());
-console.log(os.release());
-console.log('free mem: '+os.freemem());
-console.log('Total mem: '+os.totalmem());
+app.get('/', (req, res) =>{
+	res.end('Welcome');
+});
+app.get('*',function (req,res){
+	res.end('Page not found	');
+});
 
+app.listen(3000, () =>{
+	console.log('Listening on port 3000 :)');
+});
